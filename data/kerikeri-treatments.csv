@@ -1,0 +1,19 @@
+TrtNo,TrtID
+1,Untreated control
+2,HC 6% + 0.2%DS - E
+3,HC 6% + 0.2%DS - M
+4,HC 6% + 0.2%DS - L
+5,BU 1% + 2% AB - E
+6,BU 1% + 2% AB - M
+7,BU 1% + 2% AB - L
+8,BU 2% + 2% AB - E
+9,BU 2% + 2% AB - M
+10,BU 2% + 2% AB - L
+11,BU 4% + 2% AB - E
+12,BU 4% + 2% AB - M
+13,BU 4% + 2% AB - L
+14,BU 6% + 2% AB - E
+15,BU 6% + 2% AB - M
+16,BU 6% + 2% AB - L
+17,BU Lonza 4% + 2% AB - M
+18,2% AB-M

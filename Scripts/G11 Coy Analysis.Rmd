@@ -1,0 +1,135 @@
+---
+title: "G11 Budup Analysis"
+author: "Patrick Snelgar"
+date: "`r {format(Sys.Date(), '%d %M %Y')}`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+require(tidyverse)
+require(coyparser)
+library(magrittr)
+
+```
+
+```{r data_import, include=FALSE}
+
+coy <- read_csv("//Tep-file/home$/HRTPXS/My Documents/Data/Budup 2019/Matai Pacific/G11 COY.csv") %>%
+			filter(batchValidateCoy(coy)) %>%
+			rename("CaneID" = 1) %>%
+			select(CaneID, coy, Treatment)
+
+caneInfo <- read_csv("//Tep-file/home$/hrtpxs/My Documents/Data/Budup 2019/Matai Pacific/G11 Cane Lengths.csv") %>%
+				rename(CaneID = `Cane ID`) %>%
+				filter(CaneID %in% coy$CaneID) %>%
+				arrange(CaneID)
+
+```
+```{r floral_analysis, echo=FALSE}
+	
+output <- NULL
+
+for (i in 1:length(coy$Treatment)) {
+	f <- extractFloralShoots(coy$coy[i])
+	flist <- splitChars(f)[[1]]
+	t <- coy$Treatment[i]
+	if(!is.null(output))
+		output %<>% bind_rows(data.frame(flowers = flist, treatment = t, stringsAsFactors = FALSE))
+	else
+		output <- data.frame(flowers = flist, treatment = t, stringsAsFactors = FALSE)
+	
+}
+
+flowerDist <- table(output) %>%
+				data.frame() %>%
+				filter(flowers != "l") %>%
+				mutate(treatment = gsub("[ ][ ]+", " ", treatment), timing = str_extract(treatment, "[LMEV]+$"), timing = replace(timing, is.na(timing), "C")) %>%
+				mutate(treatment = factor(treatment, levels = c("3% HiCane + 0.2% Driftstop E", "3% HiCane M", "3% HiCane L", "3% HiCane VL", "Untreated control",
+							  "Budup 1% + AB 2% E", "Budup 1% + AB 2% M", "Budup 1% + AB 2% L", "Budup 1% + AB 2% VL", "2% AB M",
+							  "Budup 2% + AB 2% E", "Budup 2% + AB 2% M", "Budup 2% + AB 2% L", "Budup 2% + AB 2% VL", "Budup Lonza 4% + AB 2% M",
+							  "Budup 4% + AB 2% E" , "Budup 4% + AB 2% M", "Budup 4% + AB 2% L", "Budup 4% + AB 2% VL", "", 
+							  "Budup 6% + AB 2% E", "Budup 6% + AB 2% M", "Budup 6% + AB 2% L", "Budup 6% + AB 2% VL", " "))) %>%
+				group_by(treatment) %>%
+				mutate(percKF = Freq / sum(Freq))
+
+
+f <- flowerDist %>%
+	ggplot(aes(flowers, percKF, fill = timing)) +
+		geom_bar(stat = "identity") +
+		facet_wrap(~treatment, ncol = 5, scales = "free", drop = FALSE) +
+		coord_cartesian(ylim = c(0, 0.5)) + 
+		theme_bw() +
+		ggtitle("Distribution of KFs per floral shoot") +
+		labs(y = "Flower Distribution (%)", x = "King Flowers per shoot", fill = "Application Timing") + 
+		theme_bw() +
+		theme(legend.position = "bottom")  
+
+```
+
+
+```{r all_buds_analysis, echo=FALSE}
+
+tmp <- NULL
+
+buds <- gsub("L([0-9]*)", "", coy$coy, ignore.case = TRUE) %>%
+			gsub("[,]", "", .) %>%
+			gsub("[b+-]", "", ., ignore.case = TRUE)
+
+for (i in 1:length(buds)) {
+	flowerChars <- strsplit(buds[i], "")[[1]]
+	t <- coy$Treatment[i]
+	
+	if(!is.null(tmp))
+		tmp %<>% bind_rows(data.frame(flowers = flowerChars, treatment = t, stringsAsFactors = FALSE))
+	else
+		tmp <- data.frame(flowers = flowerChars, treatment = t, stringsAsFactors = FALSE)
+}
+
+coyDist <- table(tmp) %>%
+			data.frame() %>%
+			mutate(treatment = gsub("[ ][ ]+", " ", treatment), timing = str_extract(treatment, "[LMEV]+$")) %>%
+			mutate(treatment = factor(treatment, levels = c("6% HiCane + 0.2% Driftstop E", "6% HiCane M", "6% HiCane L", "6% HiCane VL", "Untreated control",
+							  "Budup 1% + AB 2% E", "Budup 1% + AB 2% M", "Budup 1% + AB 2% L", "Budup 1% + AB 2% VL", "2% AB M",
+							  "Budup 2% + AB 2% E", "Budup 2% + AB 2% M", "Budup 2% + AB 2% L", "Budup 2% + AB 2% VL", "Budup Lonza 4% + AB 2% M",
+							  "Budup 4% + AB 2% E" , "Budup 4% + AB 2% M", "Budup 4% + AB 2% L", "Budup 4% + AB 2% VL", "", 
+							  "Budup 6% + AB 2% E", "Budup 6% + AB 2% M", "Budup 6% + AB 2% L", "Budup 6% + AB 2% VL", " "))) %>%
+			group_by(treatment) %>%
+			mutate(percKF = Freq / sum(Freq))
+			
+
+coyInfo <- data.frame(ID = coy$CaneID, treatment = coy$Treatment, BB = budBreak(coy$coy) * 100, 
+					  KF = KingFlowers(coy$coy), WB = WinterBuds(coy$coy), 
+					  laterals = LateralFlowers(coy$coy),
+					  caneLength = caneInfo$Length) %>%
+			mutate(treatment = gsub("[ ][ ]+", " ", treatment)) %>%
+			mutate(treatment = factor(treatment, levels = c("6% HiCane + 0.2% Driftstop E", "6% HiCane M", "6% HiCane L", "6% HiCane VL", "Untreated control",
+							  "Budup 1% + AB 2% E", "Budup 1% + AB 2% M", "Budup 1% + AB 2% L", "Budup 1% + AB 2% VL", "2% AB M",
+							  "Budup 2% + AB 2% E", "Budup 2% + AB 2% M", "Budup 2% + AB 2% L", "Budup 2% + AB 2% VL", "Budup Lonza 4% + AB 2% M",
+							  "Budup 4% + AB 2% E" , "Budup 4% + AB 2% M", "Budup 4% + AB 2% L", "Budup 4% + AB 2% VL", "", 
+							  "Budup 6% + AB 2% E", "Budup 6% + AB 2% M", "Budup 6% + AB 2% L", "Budup 6% + AB 2% VL", " ")))
+
+coyInfo %<>% 
+	group_by(treatment) %>% 
+	summarise(BudBreak = paste(format(mean(BB), digits = 3), "%", sep = ""), 
+			  KFperWB = format(mean(KF/WB), digits = 3),
+			  LperWB = format(mean(laterals/WB), digits = 3),
+			  KFperM = format(mean(KF/(caneLength/250)), digits = 2))
+
+coyDist %>%
+	ggplot(aes(flowers, percKF, fill = timing)) +
+		geom_bar(stat = "identity") +
+		facet_wrap(~treatment, ncol = 5, scales = "free", drop = FALSE) +
+		ylim(0, 0.5) + 
+		labs(y = "Flower Distribution (%)", x = "King Flowers per shoot", main = "COY distribution for R19", fill = "Application Timing") + 
+		theme_bw() +
+		theme(legend.position = "bottom", plot.title = element_text(hjust = 0.5, size = 20)) + 
+		scale_fill_discrete(labels = c("Early", "Mid", "Late", "Very late", "Control")) +
+		geom_text(data = coyInfo, aes(8, 0.48, label = paste( "BB:", BudBreak)), hjust = "left", inherit.aes = FALSE) + 
+		geom_text(data = coyInfo, aes(8, 0.40, label = paste("LperWB:", LperWB)), hjust = "left", inherit.aes = FALSE) +
+		geom_text(data = coyInfo, aes(8, 0.32, label = paste("KF per m2:", KFperM)), hjust = "left", inherit.aes = FALSE) + 
+		ggtitle("G11 - Distribution of KF per shoot")
+
+ggsave("../Graphs/G11 - Distribution of shoot type.png", width = 20, height = 12)
+```

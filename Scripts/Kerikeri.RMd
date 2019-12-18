@@ -1,0 +1,186 @@
+---
+title: "Kerikeri"
+author: "Patrick Snelgar"
+date: "`r {format(Sys.Date(), '%d %B %Y')}`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(tidyverse)
+require(magrittr)
+require(coyparser)
+require(kableExtra)
+```
+
+```{r data_import, echo=FALSE, include=FALSE}
+
+kerikeriG3Raw <- read_csv("../data/Kerikeri-G3Coy.csv")
+invalidG3Data <- kerikeriG3Raw %>%
+					filter(!batchValidateCoy(Data, FALSE))
+
+validG3Data <- kerikeriG3Raw %>% 
+				filter(batchValidateCoy(Data, FALSE))
+
+kerikeriHWRaw <- read_csv("../data/Kerikeri-HWCoy.csv") 
+
+invalidHWData <- kerikeriHWRaw %>% 
+					filter(!batchValidateCoy(COY, FALSE))
+
+validHWData <- kerikeriHWRaw %>%
+					filter(batchValidateCoy(COY, FALSE))
+
+kerikeriTreatments <- read_csv("../data/kerikeri-treatments.csv")
+```
+
+## Summary of data selection
+
+### G3
+
+Number of rows in file: ```r nrow(kerikeriG3Raw)```  
+Number of valid COY strings: ```r nrow(validG3Data)```   
+Number of invalid COY strings: ```r nrow(invalidG3Data)```  
+
+Data for invalid entries:  
+```{r, results='asis', echo=FALSE}
+invalidG3Data %>%
+	kable(align = 'l') %>%
+	kable_styling('striped')
+```  
+
+### HW
+
+Number of rows in file: ```r nrow(kerikeriHWRaw)```  
+Number of valid COY strings: ```r nrow(validHWData)```  
+Number of invalid COY strings: ```r nrow(invalidHWData)```
+
+Data for invalid entries:  
+```{r, results='asis', echo=FALSE}
+invalidHWData %>%
+	kable(align = 'l') %>%
+	kable_styling('striped')
+```
+
+##
+
+```{r data_wrangling, echo=FALSE}
+
+#### G3 ####
+kerikeriG3output <- NULL
+budsG3 <- gsub("L[0-9*]", "", validG3Data$Data, ignore.case = TRUE)
+
+for(i in seq_along(budsG3)){
+	individualBuds <- str_split(budsG3[i], "")[[1]]
+	treatment <- kerikeriTreatments$TrtID[kerikeriTreatments$TrtNo == validG3Data$Trt[i]]
+	
+	kerikeriG3output %<>% bind_rows(data.frame(Buds = individualBuds[individualBuds %in% c(0:9, ".")], Treatment = treatment, stringsAsFactors = FALSE))
+}
+
+distG3 <- table(kerikeriG3output) %>%
+			data.frame() %>%
+			mutate(Timing = str_extract(Treatment, "[LME]$")) %>%
+			mutate(Treatment = factor(Treatment, levels = c("HC 6% + 0.2%DS - E", "HC 6% + 0.2%DS - M", "HC 6% + 0.2%DS - L", "Untreated control",
+															"BU 1% + 2% AB - E", "BU 1% + 2% AB - M", "BU 1% + 2% AB - L", "BU Lonza 4% + 2% AB - M",
+															"BU 2% + 2% AB - E", "BU 2% + 2% AB - M", "BU 2% + 2% AB - L", "2% AB-M",
+															"BU 4% + 2% AB - E", "BU 4% + 2% AB - M", "BU 4% + 2% AB - L", "", 
+															"BU 6% + 2% AB - E", "BU 6% + 2% AB - M", "BU 6% + 2% AB - L", " "))) %>%
+			group_by(Treatment) %>%
+			mutate(percOfTotal = Freq / sum(Freq))
+
+infoG3 <- data.frame(CaneID = validG3Data$Cane, BB = budBreak(validG3Data$Data) * 100, 
+					 Laterals = LateralFlowers(validG3Data$Data), KF = KingFlowers(validG3Data$Data),
+					 WB = WinterBuds(validG3Data$Data))
+
+infoG3$Treatment <- sapply(1:nrow(validG3Data), function(x) kerikeriTreatments$TrtID[kerikeriTreatments$TrtNo == validG3Data$Trt[x]])
+			
+infoG3 %<>% 
+	mutate(Treatment = factor(Treatment, 
+							  levels = c("HC 6% + 0.2%DS - E", "HC 6% + 0.2%DS - M", "HC 6% + 0.2%DS - L", "Untreated control",
+										 "BU 1% + 2% AB - E", "BU 1% + 2% AB - M", "BU 1% + 2% AB - L", "BU Lonza 4% + 2% AB - M",
+										 "BU 2% + 2% AB - E", "BU 2% + 2% AB - M", "BU 2% + 2% AB - L", "2% AB-M",
+										 "BU 4% + 2% AB - E", "BU 4% + 2% AB - M", "BU 4% + 2% AB - L", "", 
+										 "BU 6% + 2% AB - E", "BU 6% + 2% AB - M", "BU 6% + 2% AB - L", " "))) %>%
+	group_by(Treatment) %>%
+	summarise(BudBreak = paste(format(mean(BB), digits = 3), "%", sep = ""), 
+			  KFperWB = format(mean(KF/WB), digits = 3),
+			  LperWB = format(mean(Laterals/WB), digits = 3))
+
+
+#### HW ====
+	
+kerikeriHWoutput <- NULL
+budsHW <- gsub("L[0-9*]$", "", validHWData$COY, ignore.case = TRUE)
+
+for(i in seq_along(budsHW)){
+	individualBuds <- str_split(budsHW[i], "")[[1]]
+	
+	treatment <- kerikeriTreatments$TrtID[kerikeriTreatments$TrtNo == validHWData$Trt[i]]
+	
+	kerikeriHWoutput %<>% bind_rows(data.frame(Buds = individualBuds[individualBuds %in% c(0:9, ".")], Treatment = treatment, stringsAsFactors = FALSE))
+}
+
+distHW <- table(kerikeriHWoutput) %>%
+			data.frame() %>%
+			mutate(Timing = str_extract(Treatment, "[LME]$")) %>%
+			mutate(Treatment = factor(Treatment, levels = c("HC 6% + 0.2%DS - E", "HC 6% + 0.2%DS - M", "HC 6% + 0.2%DS - L", "Untreated control",
+															"BU 1% + 2% AB - E", "BU 1% + 2% AB - M", "BU 1% + 2% AB - L", "BU Lonza 4% + 2% AB - M",
+															"BU 2% + 2% AB - E", "BU 2% + 2% AB - M", "BU 2% + 2% AB - L", "2% AB-M",
+															"BU 4% + 2% AB - E", "BU 4% + 2% AB - M", "BU 4% + 2% AB - L", "", 
+															"BU 6% + 2% AB - E", "BU 6% + 2% AB - M", "BU 6% + 2% AB - L", " "))) %>%
+			group_by(Treatment) %>%
+			mutate(percOfTotal = Freq / sum(Freq))
+
+infoHW <- data.frame(CaneID = validHWData$Cane, BB = budBreak(validHWData$COY) * 100, 
+					 Laterals = LateralFlowers(validHWData$COY), KF = KingFlowers(validHWData$COY),
+					 WB = WinterBuds(validHWData$COY))
+
+infoHW$Treatment <- sapply(1:nrow(validHWData), function(x) kerikeriTreatments$TrtID[kerikeriTreatments$TrtNo == validHWData$Trt[x]])
+			
+infoHW %<>% 
+	mutate(Treatment = factor(Treatment, 
+							  levels = c("HC 6% + 0.2%DS - E", "HC 6% + 0.2%DS - M", "HC 6% + 0.2%DS - L", "Untreated control",
+										 "BU 1% + 2% AB - E", "BU 1% + 2% AB - M", "BU 1% + 2% AB - L", "BU Lonza 4% + 2% AB - M",
+										 "BU 2% + 2% AB - E", "BU 2% + 2% AB - M", "BU 2% + 2% AB - L", "2% AB-M",
+										 "BU 4% + 2% AB - E", "BU 4% + 2% AB - M", "BU 4% + 2% AB - L", "", 
+										 "BU 6% + 2% AB - E", "BU 6% + 2% AB - M", "BU 6% + 2% AB - L", " "))) %>%
+	group_by(Treatment) %>%
+	summarise(BudBreak = paste(format(mean(BB), digits = 3), "%", sep = ""), 
+			  KFperWB = format(mean(KF/WB), digits = 3),
+			  LperWB = format(mean(Laterals/WB), digits = 3))
+
+```
+
+
+```{r graphing, echo=FALSE}
+
+distG3 %>%
+	ggplot(aes(Buds, percOfTotal, fill = Timing)) +
+		geom_bar(stat = "identity") +
+		facet_wrap(~Treatment, ncol = 4, scales = "free", drop = FALSE) +
+		ylim(0, 0.7) + 
+		labs(y = "Flower Distribution (%)", x = "King Flowers per shoot", main = "COY distribution for G3", fill = "Application Timing") + 
+		theme_bw() +
+		theme(legend.position = "bottom", plot.title = element_text(hjust = 0.5, size = 20)) + 
+		scale_fill_discrete(labels = c("Early", "Mid", "Late", "Control")) +
+		geom_text(data = infoG3, aes(8, 0.48, label = paste( "BB:", BudBreak)), hjust = "left", inherit.aes = FALSE) + 
+		geom_text(data = infoG3, aes(8, 0.40, label = paste("LperWB:", LperWB)), hjust = "left", inherit.aes = FALSE) +
+		ggtitle("G3 - Distribution of KF per shoot")
+
+ggsave("../Graphs/G3 - Distribution of KF per shoot.png", width = 20, height = 12)
+
+distHW %>%
+	ggplot(aes(Buds, percOfTotal, fill = Timing)) +
+		geom_bar(stat = "identity") +
+		facet_wrap(~Treatment, ncol = 4, scales = "free", drop = FALSE) +
+		ylim(0, 0.75) + 
+		labs(y = "Flower Distribution (%)", x = "King Flowers per shoot", main = "COY distribution for HW", fill = "Application Timing") + 
+		theme_bw() +
+		theme(legend.position = "bottom", plot.title = element_text(hjust = 0.5, size = 20)) + 
+		scale_fill_discrete(labels = c("Early", "Mid", "Late", "Control")) +
+		geom_text(data = infoHW, aes(8, 0.48, label = paste( "BB:", BudBreak)), hjust = "left", inherit.aes = FALSE) + 
+		geom_text(data = infoHW, aes(8, 0.40, label = paste("LperWB:", LperWB)), hjust = "left", inherit.aes = FALSE) +
+		ggtitle("HW - Distribution of KF per shoot")
+
+ggsave("../Graphs/HW - Distribution of KF per shoot.png", width = 20, height = 12)
+
+```
