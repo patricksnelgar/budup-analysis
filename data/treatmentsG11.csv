@@ -1,0 +1,481 @@
+CaneID,Treatment
+1001,Untreated control
+1002,Budup Lonza 4% + AB 2%           M
+1003,Budup 1% + AB 2%                        E
+1004,Budup 1% + AB 2%                       VL
+1005,Budup 4% + AB 2%                        M
+1006,6% HiCane                                        L
+1007,Budup 4% + AB 2%                         L
+1008,Budup 4% + AB 2%                       VL
+1009,2% AB                                                M
+1010,Budup 1% + AB 2%                        M
+1011,Budup 6% + AB 2%                        E
+1012,Budup 2% + AB 2%                         L
+1013,Budup 6% + AB 2%                        M
+1014,Budup 6% + AB 2%                         L
+1015,Budup 6% + AB 2%                       VL
+1016,Budup 4% + AB 2%                        E
+1017,Budup 2% + AB 2%                       VL
+1018,Budup 1% + AB 2%                         L
+1019,Untreated control
+1020,6% HiCane                                      VL
+1021,Budup 2% + AB 2%                        E
+1022,6% HiCane                                       M
+1023,Budup 2% + AB 2%                        M
+1024,6% HiCane + 0.2% Driftstop E         
+1025,Budup 1% + AB 2%                        E
+1026,Budup 6% + AB 2%                        M
+1027,Untreated control
+1028,Budup 1% + AB 2%                       VL
+1029,Budup 6% + AB 2%                         L
+1030,6% HiCane                                        L
+1031,Budup 4% + AB 2%                        M
+1032,Budup 4% + AB 2%                         L
+1033,Budup 2% + AB 2%                       VL
+1034,6% HiCane                                      VL
+1035,Budup Lonza 4% + AB 2%           M
+1036,6% HiCane                                       M
+1037,Budup 2% + AB 2%                        M
+1038,Budup 4% + AB 2%                       VL
+1039,Budup 2% + AB 2%                         L
+1040,Untreated control
+1041,Budup 6% + AB 2%                       VL
+1042,Budup 1% + AB 2%                         L
+1043,2% AB                                                M
+1044,Budup 1% + AB 2%                        M
+1045,Budup 6% + AB 2%                        E
+1046,6% HiCane + 0.2% Driftstop E         
+1047,Budup 2% + AB 2%                        E
+1048,Budup 4% + AB 2%                        E
+1049,Untreated control
+1050,Untreated control
+1051,Budup 1% + AB 2%                       VL
+1052,Budup 2% + AB 2%                         L
+1053,6% HiCane                                      VL
+1054,Budup 4% + AB 2%                       VL
+1055,6% HiCane                                       M
+1056,Budup 4% + AB 2%                        E
+1057,Budup 1% + AB 2%                        M
+1058,Budup 2% + AB 2%                        E
+1059,Budup 1% + AB 2%                         L
+1060,Budup 4% + AB 2%                         L
+1061,Budup 2% + AB 2%                       VL
+1062,Budup 4% + AB 2%                        M
+1063,Budup 6% + AB 2%                        M
+1064,Budup 6% + AB 2%                        E
+1065,Budup 2% + AB 2%                        M
+1066,6% HiCane + 0.2% Driftstop E         
+1067,6% HiCane                                        L
+1068,Budup 6% + AB 2%                       VL
+1069,Budup Lonza 4% + AB 2%           M
+1070,Budup 1% + AB 2%                        E
+1071,Budup 6% + AB 2%                         L
+1072,2% AB                                                M
+1073,Budup 1% + AB 2%                         L
+1074,Budup 6% + AB 2%                        E
+1075,6% HiCane                                       M
+1076,Budup Lonza 4% + AB 2%           M
+1077,Budup 1% + AB 2%                        E
+1078,Untreated control
+1079,6% HiCane + 0.2% Driftstop E         
+1080,Budup 2% + AB 2%                       VL
+1081,Budup 2% + AB 2%                        M
+1082,Budup 6% + AB 2%                         L
+1083,Budup 4% + AB 2%                        M
+1084,Budup 4% + AB 2%                         L
+1085,Budup 1% + AB 2%                       VL
+1086,Budup 4% + AB 2%                        E
+1087,Budup 6% + AB 2%                        M
+1088,Untreated control
+1089,6% HiCane                                        L
+1090,Budup 1% + AB 2%                        M
+1091,Budup 6% + AB 2%                       VL
+1092,6% HiCane                                      VL
+1093,Budup 2% + AB 2%                         L
+1094,Budup 2% + AB 2%                        E
+1095,2% AB                                                M
+1096,Budup 4% + AB 2%                       VL
+1097,Budup 6% + AB 2%                        M
+1098,Untreated control
+1099,Budup 6% + AB 2%                       VL
+1100,Budup Lonza 4% + AB 2%           M
+1101,Untreated control
+1102,Budup 1% + AB 2%                       VL
+1103,6% HiCane                                        L
+1104,Budup 2% + AB 2%                        E
+1105,Budup 4% + AB 2%                       VL
+1106,Budup 2% + AB 2%                         L
+1107,Budup 6% + AB 2%                         L
+1108,Budup 1% + AB 2%                        E
+1109,Budup 2% + AB 2%                       VL
+1110,Budup 1% + AB 2%                        M
+1111,Budup 4% + AB 2%                         L
+1112,Budup 4% + AB 2%                        M
+1113,Budup 6% + AB 2%                        E
+1114,2% AB                                                M
+1115,Budup 2% + AB 2%                        M
+1116,6% HiCane + 0.2% Driftstop E         
+1117,Budup 1% + AB 2%                         L
+1118,Budup 4% + AB 2%                        E
+1119,6% HiCane                                      VL
+1120,6% HiCane                                       M
+1121,6% HiCane                                       M
+1122,Budup 1% + AB 2%                       VL
+1123,Budup 4% + AB 2%                        M
+1124,Budup 2% + AB 2%                       VL
+1125,2% AB                                                M
+1126,Budup 4% + AB 2%                        E
+1127,Budup 6% + AB 2%                        M
+1128,6% HiCane                                      VL
+1129,Untreated control
+1130,Budup 4% + AB 2%                       VL
+1131,Budup 6% + AB 2%                         L
+1132,Untreated control
+1133,Budup 2% + AB 2%                         L
+1134,6% HiCane + 0.2% Driftstop E         
+1135,6% HiCane                                        L
+1136,Budup 1% + AB 2%                        E
+1137,Budup 1% + AB 2%                        M
+1138,Budup 2% + AB 2%                        E
+1139,Budup 4% + AB 2%                         L
+1140,Budup 6% + AB 2%                        E
+1141,Budup 2% + AB 2%                        M
+1142,Budup 6% + AB 2%                       VL
+1143,Budup 1% + AB 2%                         L
+1144,Budup Lonza 4% + AB 2%           M
+1145,Budup 6% + AB 2%                       VL
+1146,Budup 2% + AB 2%                        E
+1147,Budup 6% + AB 2%                        M
+1148,Budup 1% + AB 2%                        E
+1149,Budup 2% + AB 2%                       VL
+1150,Budup 4% + AB 2%                       VL
+1151,Budup 1% + AB 2%                        M
+1152,Untreated control
+1153,6% HiCane + 0.2% Driftstop E         
+1154,Budup 1% + AB 2%                         L
+1155,Budup 4% + AB 2%                         L
+1156,Budup 6% + AB 2%                        E
+1157,6% HiCane                                        L
+1158,6% HiCane                                       M
+1159,Budup 2% + AB 2%                        M
+1160,Budup Lonza 4% + AB 2%           M
+1161,Budup 6% + AB 2%                         L
+1162,2% AB                                                M
+1163,Budup 4% + AB 2%                        E
+1164,6% HiCane                                      VL
+1165,Budup 1% + AB 2%                       VL
+1166,Budup 4% + AB 2%                        M
+1167,Untreated control
+1168,Budup 2% + AB 2%                         L
+1169,Budup 1% + AB 2%                        M
+1170,Budup 4% + AB 2%                        M
+1171,Budup 6% + AB 2%                         L
+1172,Budup 2% + AB 2%                         L
+1173,6% HiCane                                        L
+1174,Budup 1% + AB 2%                        E
+1175,Budup 2% + AB 2%                       VL
+1176,6% HiCane                                      VL
+1177,Untreated control
+1178,6% HiCane                                       M
+1179,Budup 4% + AB 2%                       VL
+1180,Budup 1% + AB 2%                         L
+1181,Untreated control
+1182,2% AB                                                M
+1183,Budup 4% + AB 2%                        E
+1184,Budup 6% + AB 2%                        M
+1185,Budup 2% + AB 2%                        E
+1186,Budup 1% + AB 2%                       VL
+1187,Budup 2% + AB 2%                        M
+1188,Budup Lonza 4% + AB 2%           M
+1189,Budup 4% + AB 2%                         L
+1190,Budup 6% + AB 2%                        E
+1191,6% HiCane + 0.2% Driftstop E         
+1192,Budup 6% + AB 2%                       VL
+1193,Budup 4% + AB 2%                         L
+1194,Budup 2% + AB 2%                       VL
+1195,Budup 1% + AB 2%                       VL
+1196,Budup 4% + AB 2%                        E
+1197,Budup 6% + AB 2%                       VL
+1198,2% AB                                                M
+1199,6% HiCane                                      VL
+1200,Budup 1% + AB 2%                        E
+1201,Budup 2% + AB 2%                        M
+1202,Budup 6% + AB 2%                        M
+1203,6% HiCane                                       M
+1204,Budup 6% + AB 2%                         L
+1205,Budup 4% + AB 2%                        M
+1206,Untreated control
+1207,6% HiCane                                        L
+1208,Budup 2% + AB 2%                         L
+1209,Budup 1% + AB 2%                         L
+1210,Budup 4% + AB 2%                       VL
+1211,Untreated control
+1212,Budup 1% + AB 2%                        M
+1213,Budup 2% + AB 2%                        E
+1214,Budup 6% + AB 2%                        E
+1215,6% HiCane + 0.2% Driftstop E         
+1216,Budup Lonza 4% + AB 2%           M
+1217,Budup 2% + AB 2%                        M
+1218,2% AB                                                M
+1219,Budup 1% + AB 2%                        E
+1220,6% HiCane                                       M
+1221,6% HiCane                                        L
+1222,Untreated control
+1223,Budup 1% + AB 2%                         L
+1224,Budup 2% + AB 2%                         L
+1225,Budup 6% + AB 2%                        E
+1226,Budup Lonza 4% + AB 2%           M
+1227,Budup 1% + AB 2%                       VL
+1228,Budup 6% + AB 2%                         L
+1229,Budup 2% + AB 2%                       VL
+1230,Budup 2% + AB 2%                        E
+1231,Budup 4% + AB 2%                       VL
+1232,Budup 4% + AB 2%                        E
+1233,Budup 1% + AB 2%                        M
+1234,Budup 4% + AB 2%                        M
+1235,Budup 4% + AB 2%                         L
+1236,6% HiCane                                      VL
+1237,Untreated control
+1238,Budup 6% + AB 2%                        M
+1239,6% HiCane + 0.2% Driftstop E         
+1240,Budup 6% + AB 2%                       VL
+1241,Budup 2% + AB 2%                         L
+1242,Budup 2% + AB 2%                       VL
+1243,Budup Lonza 4% + AB 2%           M
+1244,Budup 4% + AB 2%                       VL
+1245,Untreated control
+1246,Untreated control
+1247,Budup 1% + AB 2%                        E
+1248,Budup 1% + AB 2%                       VL
+1249,Budup 4% + AB 2%                        E
+1250,6% HiCane                                        L
+1251,6% HiCane                                      VL
+1252,2% AB                                                M
+1253,Budup 6% + AB 2%                        M
+1254,6% HiCane                                       M
+1255,Budup 4% + AB 2%                        M
+1256,Budup 1% + AB 2%                         L
+1257,Budup 1% + AB 2%                        M
+1258,Budup 2% + AB 2%                        E
+1259,Budup 4% + AB 2%                         L
+1260,Budup 6% + AB 2%                        E
+1261,Budup 2% + AB 2%                        M
+1262,6% HiCane + 0.2% Driftstop E         
+1263,Budup 6% + AB 2%                       VL
+1264,Budup 6% + AB 2%                         L
+1265,Budup 4% + AB 2%                         L
+1266,Budup 1% + AB 2%                         L
+1267,Untreated control
+1268,Budup 1% + AB 2%                        E
+1269,2% AB                                                M
+1270,Budup 4% + AB 2%                        E
+1271,6% HiCane + 0.2% Driftstop E         
+1272,Budup 2% + AB 2%                        M
+1273,6% HiCane                                      VL
+1274,6% HiCane                                       M
+1275,Budup 1% + AB 2%                       VL
+1276,Budup 1% + AB 2%                        M
+1277,Budup 2% + AB 2%                         L
+1278,Budup 4% + AB 2%                        M
+1279,Budup 6% + AB 2%                       VL
+1280,Budup 6% + AB 2%                        M
+1281,Untreated control
+1282,6% HiCane                                        L
+1283,Budup 2% + AB 2%                       VL
+1284,Budup 4% + AB 2%                       VL
+1285,Budup 2% + AB 2%                        E
+1286,Budup 6% + AB 2%                        E
+1287,Budup Lonza 4% + AB 2%           M
+1288,Budup 6% + AB 2%                         L
+1289,Budup 2% + AB 2%                       VL
+1290,Untreated control
+1291,6% HiCane + 0.2% Driftstop E         
+1292,Budup 6% + AB 2%                        E
+1293,Budup 2% + AB 2%                        M
+1294,2% AB                                                M
+1295,Budup 1% + AB 2%                       VL
+1296,Budup 6% + AB 2%                       VL
+1297,Budup 2% + AB 2%                         L
+1298,Budup Lonza 4% + AB 2%           M
+1299,Budup 6% + AB 2%                        M
+1300,Budup 4% + AB 2%                       VL
+1301,Budup 6% + AB 2%                         L
+1302,6% HiCane                                      VL
+1303,Budup 1% + AB 2%                        E
+1304,Budup 1% + AB 2%                         L
+1305,Budup 2% + AB 2%                        E
+1306,Untreated control
+1307,Budup 4% + AB 2%                         L
+1308,6% HiCane                                        L
+1309,6% HiCane                                       M
+1310,Budup 4% + AB 2%                        E
+1311,Budup 4% + AB 2%                        M
+1312,Budup 1% + AB 2%                        M
+1313,Budup 2% + AB 2%                         L
+1314,Untreated control
+1315,Budup Lonza 4% + AB 2%           M
+1316,Budup 1% + AB 2%                        E
+1317,Budup 6% + AB 2%                         L
+1318,Budup 6% + AB 2%                       VL
+1319,Budup 1% + AB 2%                       VL
+1320,Budup 6% + AB 2%                        M
+1321,2% AB                                                M
+1322,6% HiCane                                        L
+1323,Budup 4% + AB 2%                        M
+1324,Budup 4% + AB 2%                        E
+1325,Budup 2% + AB 2%                       VL
+1326,Budup 6% + AB 2%                        E
+1327,Budup 2% + AB 2%                        M
+1328,Budup 4% + AB 2%                       VL
+1329,Untreated control
+1330,Budup 4% + AB 2%                         L
+1331,6% HiCane + 0.2% Driftstop E         
+1332,6% HiCane                                       M
+1333,6% HiCane                                      VL
+1334,Budup 1% + AB 2%                        M
+1335,Budup 2% + AB 2%                        E
+1336,Budup 1% + AB 2%                         L
+1337,6% HiCane                                      VL
+1338,6% HiCane                                        L
+1339,Budup 2% + AB 2%                         L
+1340,Budup 2% + AB 2%                        E
+1341,6% HiCane                                       M
+1342,Budup 1% + AB 2%                         L
+1343,Budup 2% + AB 2%                        M
+1344,Budup Lonza 4% + AB 2%           M
+1345,6% HiCane + 0.2% Driftstop E         
+1346,Budup 6% + AB 2%                       VL
+1347,Budup 4% + AB 2%                        E
+1348,Untreated control
+1349,Budup 6% + AB 2%                         L
+1350,Budup 1% + AB 2%                        E
+1351,Budup 1% + AB 2%                        M
+1352,Budup 2% + AB 2%                       VL
+1353,2% AB                                                M
+1354,Budup 1% + AB 2%                       VL
+1355,Budup 4% + AB 2%                         L
+1356,Budup 4% + AB 2%                        M
+1357,Budup 6% + AB 2%                        M
+1358,Budup 4% + AB 2%                       VL
+1359,Untreated control
+1360,Budup 6% + AB 2%                        E
+1361,Budup 1% + AB 2%                        M
+1362,Budup 6% + AB 2%                       VL
+1363,Budup 4% + AB 2%                       VL
+1364,Budup 2% + AB 2%                        M
+1365,Budup Lonza 4% + AB 2%           M
+1366,Budup 1% + AB 2%                        E
+1367,6% HiCane + 0.2% Driftstop E         
+1368,Untreated control
+1369,Budup 4% + AB 2%                        E
+1370,2% AB                                                M
+1371,Untreated control
+1372,6% HiCane                                      VL
+1373,6% HiCane                                       M
+1374,Budup 2% + AB 2%                         L
+1375,Budup 6% + AB 2%                         L
+1376,Budup 1% + AB 2%                       VL
+1377,Budup 4% + AB 2%                        M
+1378,Budup 6% + AB 2%                        M
+1379,Budup 1% + AB 2%                         L
+1380,Budup 2% + AB 2%                       VL
+1381,Budup 6% + AB 2%                        E
+1382,Budup 2% + AB 2%                        E
+1383,6% HiCane                                        L
+1384,Budup 4% + AB 2%                         L
+1385,2% AB                                                M
+1386,Budup 1% + AB 2%                        M
+1387,6% HiCane                                       M
+1388,Budup 1% + AB 2%                       VL
+1389,Budup 4% + AB 2%                       VL
+1390,Budup 4% + AB 2%                        M
+1391,Budup 6% + AB 2%                        M
+1392,Budup 2% + AB 2%                         L
+1393,Budup 6% + AB 2%                       VL
+1394,Budup 2% + AB 2%                        E
+1395,Budup 2% + AB 2%                        M
+1396,Budup 6% + AB 2%                        E
+1397,Untreated control
+1398,Untreated control
+1399,6% HiCane                                        L
+1400,Budup 1% + AB 2%                         L
+1401,Budup 4% + AB 2%                         L
+1402,Budup 4% + AB 2%                        E
+1403,Budup 2% + AB 2%                       VL
+1404,6% HiCane + 0.2% Driftstop E         
+1405,Budup Lonza 4% + AB 2%           M
+1406,Budup 6% + AB 2%                         L
+1407,Budup 1% + AB 2%                        E
+1408,6% HiCane                                      VL
+1409,Budup 4% + AB 2%                       VL
+1410,Budup 4% + AB 2%                         L
+1411,6% HiCane                                        L
+1412,Budup 2% + AB 2%                        E
+1413,6% HiCane                                       M
+1414,Budup 1% + AB 2%                         L
+1415,Budup Lonza 4% + AB 2%           M
+1416,Untreated control
+1417,2% AB                                                M
+1418,Budup 1% + AB 2%                       VL
+1419,Budup 6% + AB 2%                       VL
+1420,Budup 6% + AB 2%                        E
+1421,Budup 2% + AB 2%                        M
+1422,Budup 6% + AB 2%                        M
+1423,6% HiCane + 0.2% Driftstop E         
+1424,Budup 6% + AB 2%                         L
+1425,Budup 1% + AB 2%                        E
+1426,Budup 4% + AB 2%                        E
+1427,Budup 4% + AB 2%                        M
+1428,Budup 2% + AB 2%                         L
+1429,Budup 2% + AB 2%                       VL
+1430,Untreated control
+1431,6% HiCane                                      VL
+1432,Budup 1% + AB 2%                        M
+1433,Budup Lonza 4% + AB 2%           M
+1434,Budup 2% + AB 2%                        E
+1435,6% HiCane                                        L
+1436,Budup 6% + AB 2%                         L
+1437,Budup 6% + AB 2%                        M
+1438,Budup 1% + AB 2%                       VL
+1439,Budup 6% + AB 2%                       VL
+1440,Budup 1% + AB 2%                         L
+1441,Budup 1% + AB 2%                        E
+1442,2% AB                                                M
+1443,Untreated control
+1444,Untreated control
+1445,Budup 1% + AB 2%                        M
+1446,Budup 4% + AB 2%                        E
+1447,6% HiCane                                      VL
+1448,Budup 2% + AB 2%                         L
+1449,6% HiCane                                       M
+1450,Budup 2% + AB 2%                       VL
+1451,Budup 4% + AB 2%                        M
+1452,Budup 4% + AB 2%                       VL
+1453,Budup 4% + AB 2%                         L
+1454,Budup 6% + AB 2%                        E
+1455,Budup 2% + AB 2%                        M
+1456,6% HiCane + 0.2% Driftstop E         
+1457,Untreated control
+1458,Budup 1% + AB 2%                         L
+1459,Budup Lonza 4% + AB 2%           M
+1460,Budup 6% + AB 2%                        M
+1461,Budup 4% + AB 2%                        E
+1462,Budup 2% + AB 2%                       VL
+1463,Budup 4% + AB 2%                       VL
+1464,Budup 6% + AB 2%                         L
+1465,6% HiCane                                       M
+1466,6% HiCane                                      VL
+1467,Budup 1% + AB 2%                        M
+1468,Untreated control
+1469,6% HiCane                                        L
+1470,Budup 2% + AB 2%                         L
+1471,Budup 2% + AB 2%                        E
+1472,Budup 4% + AB 2%                         L
+1473,Budup 2% + AB 2%                        M
+1474,Budup 1% + AB 2%                        E
+1475,Budup 6% + AB 2%                        E
+1476,6% HiCane + 0.2% Driftstop E         
+1477,2% AB                                                M
+1478,Budup 4% + AB 2%                        M
+1479,Budup 1% + AB 2%                       VL
+1480,Budup 6% + AB 2%                       VL
