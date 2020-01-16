@@ -51,8 +51,14 @@ fillDataFrame <- function(data, IDcolumn = 1){
 	return(mergeLogAndTranspose(processed, log))
 }
 
-treatmentsG11 <- read_csv("./data/treatmentsG11.csv")
-treatmentsR19 <- read_csv("./data/treatmentsR19.csv")
+treatmentsG11 <- read_csv("./data/treatmentsG11.csv") %>%
+					rename(CaneID = 1, Treatment = 2)
+treatmentsR19 <- read_csv("./data/treatmentsR19.csv")%>%
+					rename(CaneID = 1, Treatment = 2)
+treatmentsHW <- read_csv("./data/treatmentsHW.csv")%>%
+					rename(CaneID = 1, Treatment = 2)
+treatmentsG3 <- read_csv("./data/treatmentsG3.csv")%>%
+					rename(CaneID = 1, Treatment = 2)
 
 #replace 'x' with NA so columns are read as numeric
 rawBB_G11 <- read_csv("./data/G11_budbreak.csv", na = c("x", NA))
@@ -70,6 +76,23 @@ processedR19_budbreak <- fillDataFrame(rawBB_R19)
 processedR19_budbreak$Treatment <- sapply(seq_along(processedR19_budbreak$CaneID), 
 										  function(x) treatmentsR19$Treatment[processedR19_budbreak$CaneID[x] == treatmentsR19$CaneID])
 
+rawG3_budbreak <- read_csv("./data/G3_budbreak.csv") %>%
+					rename(CaneID = 1)
+
+processedG3_budbreak <- fillDataFrame(rawG3_budbreak)
+
+processedG3_budbreak$Treatment <- sapply(seq_along(processedG3_budbreak$CaneID), 
+							   			function(x) treatmentsG3$Treatment[processedG3_budbreak$CaneID[x] == treatmentsG3$CaneID])
+
+rawHW_budbreak <- read_csv("./data/HW_budbreak.csv") %>%
+					rename(CaneID = 1)
+
+processedHW_budbreak <- fillDataFrame(rawHW_budbreak)
+
+processedHW_budbreak$Treatment <- sapply(seq_along(processedHW_budbreak$CaneID), 
+										 function(x) treatmentsHW$Treatment[processedHW_budbreak$CaneID[x] == treatmentsHW$CaneID])
 
 write_csv(processedG11_budbreak, "./output/G11_budbreak_longformat.csv")
 write_csv(processedR19_budbreak, "./output/R19_budbreak_longformat.csv")
+write_csv(processedG3_budbreak, "./output/G3_budbreak_longformat.csv")
+write_csv(processedHW_budbreak, "./output/HW_budbreak_longformat.csv")

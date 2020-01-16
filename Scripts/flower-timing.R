@@ -57,14 +57,19 @@ updateFlowerNumbers <- function(originalData, IDcolumn = 1){
 
 
 rawG11 <- read_csv("./data/G11_flowering.csv")
+treatmentsG11 <- read_csv("./data/treatmentsG11.csv")
 
 processedG11_flowering <- updateFlowerNumbers(rawG11)
+
+processedG11_flowering$Treatment <- sapply(seq_along(processedG11_flowering$CaneID), 
+										   function(x) treatmentsG11$Treatment[processedG11_flowering$CaneID[x] == treatmentsG11$CaneID])
 
 write_csv(processedG11_flowering, "./output/G11_flowering_longFormat.csv")
 
 ###################################  R19  ##########################################################
 
 rawR19 <- read_csv("./data/R19_flowering.csv")
+treatmentsR19 <- read_csv("./data/treatmentsR19.csv")
 
 rawR19 %>% 
 	filter(!is.na(X5)) %>%
@@ -93,4 +98,40 @@ filteredR19 <-
 
 processedR19_flowering <- updateFlowerNumbers(filteredR19)
 
+processedR19_flowering$Treatment <- sapply(seq_along(processedR19_flowering$CaneID), 
+										   function(x) treatmentsR19$Treatment[processedR19_flowering$CaneID[x] == treatmentsR19$CaneID])
+
 write_csv(processedR19_flowering, "./output/R19_flowering_longFormat.csv")
+
+
+################################### G3 ##############################################################
+
+rawG3 <- read_csv("./data/G3_flowering.csv") %>%
+			rename(CaneID = 1)
+
+treatmentsG3 <- read_csv("./data/treatmentsG3.csv") %>%
+					rename(CaneID = 1, Treatment = 2)
+
+processedG3_flowering <- updateFlowerNumbers(rawG3)
+
+processedG3_flowering$Treatment <- sapply(seq_along(processedG3_flowering$CaneID), 
+										  function(x) treatmentsG3$Treatment[processedG3_flowering$CaneID[x] == treatmentsG3$CaneID])
+
+write_csv(processedG3_flowering, "./output/G3_flowering_longformat.csv")
+
+
+
+################################## HW ###############################################################
+
+rawHW <- read_csv("./data/HW_flowering.csv") %>%
+			rename(CaneID = 1)
+
+treatmentsHW <- read_csv("./data/treatmentsHW.csv") %>%
+					rename(CaneID = 1, Treatment = 2)
+
+processedHW_flowering <- updateFlowerNumbers(rawHW)
+
+processedHW_flowering$Treatment <- sapply(seq_along(processedHW_flowering$CaneID), 
+										  function(x) treatmentsHW$Treatment[processedHW_flowering$CaneID[x] == treatmentsHW$CaneID])
+
+write_csv(processedHW_flowering, "./output/HW_flowering_longformat.csv")
