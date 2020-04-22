@@ -1,0 +1,371 @@
+Cane,Trt/Timing
+1,BU 4% + 2% AB - M
+2,BU 1% + 2% AB - M
+3,BU 4% + 2% AB - E
+4,2% AB - M
+5,HC 6% + 0.2%DS - E
+6,HC 6% + 0.2%DS - M
+7,BU 1% + 2% AB - L
+8,BU 2% + 2% AB - E
+9,BU Lonza 4% + 2% AB - M
+10,BU 4% + 2% AB - E
+11,BU 2% + 2% AB - L
+12,2% AB - M
+13,BU 4% + 2% AB - L
+14,BU 6% + 2% AB - E
+15,BU 2% + 2% AB - M
+16,HC 6% + 0.2%DS - M
+17,BU 1% + 2% AB - E
+18,BU 1% + 2% AB - L
+19,Untreated control
+20,BU 1% + 2% AB - L
+21,HC 6% + 0.2%DS - E
+22,BU 6% + 2% AB - M
+23,HC 6% + 0.2%DS - L
+24,2% AB - M
+25,BU 2% + 2% AB - M
+26,BU 6% + 2% AB - L
+27,BU 4% + 2% AB - E
+28,BU 6% + 2% AB - E
+29,BU 1% + 2% AB - E
+30,BU 2% + 2% AB - L
+31,HC 6% + 0.2%DS - L
+32,BU 6% + 2% AB - E
+33,BU 2% + 2% AB - M
+34,BU Lonza 4% + 2% AB - M
+35,BU 1% + 2% AB - L
+36,Untreated control
+37,BU 6% + 2% AB - M
+38,BU 2% + 2% AB - L
+39,BU 1% + 2% AB - L
+40,BU 6% + 2% AB - L
+41,BU 2% + 2% AB - E
+42,BU 4% + 2% AB - E
+43,2% AB - M
+44,BU 4% + 2% AB - M
+45,HC 6% + 0.2%DS - E
+46,BU 6% + 2% AB - M
+47,BU 6% + 2% AB - L
+48,BU 2% + 2% AB - M
+49,BU 1% + 2% AB - E
+50,Untreated control
+51,Untreated control
+52,HC 6% + 0.2%DS - M
+53,BU 4% + 2% AB - E
+54,BU 1% + 2% AB - M
+55,BU 4% + 2% AB - L
+56,BU 1% + 2% AB - L
+57,BU Lonza 4% + 2% AB - M
+58,BU 6% + 2% AB - E
+59,BU 6% + 2% AB - M
+60,BU 1% + 2% AB - L
+61,BU 4% + 2% AB - L
+62,BU 1% + 2% AB - M
+63,BU 6% + 2% AB - L
+64,BU 2% + 2% AB - E
+65,BU 4% + 2% AB - M
+66,BU 6% + 2% AB - E
+67,BU 1% + 2% AB - E
+68,BU 1% + 2% AB - M
+69,2% AB - M
+70,Untreated control
+71,BU 6% + 2% AB - L
+72,BU 2% + 2% AB - L
+73,BU 4% + 2% AB - M
+74,BU 6% + 2% AB - L
+75,BU 1% + 2% AB - L
+76,BU 4% + 2% AB - E
+77,2% AB - M
+78,BU 6% + 2% AB - M
+79,BU 6% + 2% AB - E
+80,Untreated control
+81,BU 1% + 2% AB - M
+82,BU 2% + 2% AB - E
+83,BU 1% + 2% AB - E
+84,2% AB - M
+85,HC 6% + 0.2%DS - L
+86,BU 4% + 2% AB - M
+87,HC 6% + 0.2%DS - E
+88,BU 2% + 2% AB - M
+89,Untreated control
+90,BU Lonza 4% + 2% AB - M
+91,BU 4% + 2% AB - E
+92,BU 2% + 2% AB - L
+93,HC 6% + 0.2%DS - E
+94,BU 6% + 2% AB - L
+95,BU 2% + 2% AB - E
+96,BU Lonza 4% + 2% AB - M
+97,HC 6% + 0.2%DS - M
+98,BU 4% + 2% AB - L
+99,BU 4% + 2% AB - M
+100,BU 2% + 2% AB - M
+101,HC 6% + 0.2%DS - L
+102,BU 1% + 2% AB - E
+103,BU 2% + 2% AB - L
+104,BU 6% + 2% AB - L
+105,HC 6% + 0.2%DS - M
+106,Untreated control
+107,2% AB - M
+108,HC 6% + 0.2%DS - E
+109,BU 2% + 2% AB - M
+110,BU 2% + 2% AB - E
+111,BU 4% + 2% AB - L
+112,HC 6% + 0.2%DS - M
+113,2% AB - M
+114,BU 1% + 2% AB - L
+115,BU 1% + 2% AB - M
+116,BU 2% + 2% AB - E
+117,BU 6% + 2% AB - L
+118,Untreated control
+119,BU 4% + 2% AB - M
+120,BU 1% + 2% AB - E
+121,BU 2% + 2% AB - L
+122,BU 6% + 2% AB - M
+123,HC 6% + 0.2%DS - L
+124,HC 6% + 0.2%DS - E
+125,Untreated control
+126,BU 4% + 2% AB - M
+127,BU Lonza 4% + 2% AB - M
+128,BU 2% + 2% AB - M
+129,BU 1% + 2% AB - E
+130,BU 6% + 2% AB - M
+131,BU 1% + 2% AB - L
+132,BU 6% + 2% AB - E
+133,HC 6% + 0.2%DS - M
+134,BU 2% + 2% AB - M
+135,BU 1% + 2% AB - M
+136,HC 6% + 0.2%DS - L
+137,BU Lonza 4% + 2% AB - M
+138,BU 1% + 2% AB - E
+139,BU 2% + 2% AB - M
+140,BU 2% + 2% AB - E
+141,BU 4% + 2% AB - L
+142,HC 6% + 0.2%DS - E
+143,BU 1% + 2% AB - E
+144,BU 4% + 2% AB - E
+145,HC 6% + 0.2%DS - L
+146,BU Lonza 4% + 2% AB - M
+147,BU 1% + 2% AB - L
+148,BU 6% + 2% AB - L
+149,HC 6% + 0.2%DS - E
+150,BU 4% + 2% AB - L
+151,HC 6% + 0.2%DS - L
+152,HC 6% + 0.2%DS - M
+153,BU 2% + 2% AB - E
+154,2% AB - M
+155,Untreated control
+156,BU Lonza 4% + 2% AB - M
+157,HC 6% + 0.2%DS - M
+158,BU 6% + 2% AB - M
+159,BU 2% + 2% AB - L
+160,BU 4% + 2% AB - L
+161,HC 6% + 0.2%DS - E
+162,2% AB - M
+163,HC 6% + 0.2%DS - L
+164,Untreated control
+165,BU 1% + 2% AB - E
+166,BU 1% + 2% AB - M
+167,Untreated control
+168,BU 2% + 2% AB - E
+169,HC 6% + 0.2%DS - E
+170,BU 6% + 2% AB - L
+171,BU 2% + 2% AB - M
+172,BU 4% + 2% AB - L
+173,Untreated control
+174,BU 6% + 2% AB - E
+175,HC 6% + 0.2%DS - E
+176,BU 2% + 2% AB - M
+177,BU 6% + 2% AB - L
+178,BU 2% + 2% AB - L
+179,HC 6% + 0.2%DS - L
+180,BU 4% + 2% AB - E
+181,BU 1% + 2% AB - M
+182,Untreated control
+183,BU 6% + 2% AB - M
+184,BU 2% + 2% AB - E
+185,BU 4% + 2% AB - M
+186,2% AB - M
+187,BU Lonza 4% + 2% AB - M
+188,BU 4% + 2% AB - L
+189,BU 1% + 2% AB - E
+190,HC 6% + 0.2%DS - M
+191,BU 1% + 2% AB - L
+192,BU 2% + 2% AB - L
+193,2% AB - M
+194,HC 6% + 0.2%DS - L
+195,BU 6% + 2% AB - M
+196,HC 6% + 0.2%DS - M
+197,BU 1% + 2% AB - L
+198,BU 4% + 2% AB - M
+199,BU Lonza 4% + 2% AB - M
+200,BU 6% + 2% AB - E
+201,BU 4% + 2% AB - E
+202,BU 4% + 2% AB - E
+203,BU 6% + 2% AB - E
+204,BU 1% + 2% AB - E
+205,BU 1% + 2% AB - M
+206,BU 2% + 2% AB - E
+207,BU 4% + 2% AB - M
+208,BU 1% + 2% AB - E
+209,BU 2% + 2% AB - M
+210,BU 1% + 2% AB - L
+211,BU 6% + 2% AB - L
+212,BU 4% + 2% AB - E
+213,BU 4% + 2% AB - M
+214,BU 6% + 2% AB - M
+215,BU 1% + 2% AB - L
+216,BU 6% + 2% AB - E
+217,BU 2% + 2% AB - L
+218,Untreated control
+219,BU 2% + 2% AB - M
+220,BU Lonza 4% + 2% AB - M
+221,BU 1% + 2% AB - M
+222,Untreated control
+223,BU 1% + 2% AB - M
+224,BU 6% + 2% AB - L
+225,2% AB - M
+226,BU 2% + 2% AB - L
+227,BU 4% + 2% AB - M
+228,BU 6% + 2% AB - E
+229,HC 6% + 0.2%DS - M
+230,Untreated control
+231,BU 6% + 2% AB - M
+232,BU 6% + 2% AB - L
+233,BU 4% + 2% AB - E
+234,HC 6% + 0.2%DS - E
+235,2% AB - M
+236,Untreated control
+237,BU 2% + 2% AB - E
+238,BU 4% + 2% AB - M
+239,BU 4% + 2% AB - L
+240,BU 2% + 2% AB - L
+241,2% AB - M
+242,BU 2% + 2% AB - L
+243,BU 4% + 2% AB - E
+244,BU 1% + 2% AB - L
+245,BU 1% + 2% AB - M
+246,BU 4% + 2% AB - L
+247,HC 6% + 0.2%DS - M
+248,BU 2% + 2% AB - E
+249,BU 6% + 2% AB - L
+250,BU 6% + 2% AB - E
+251,Untreated control
+252,BU Lonza 4% + 2% AB - M
+253,BU 4% + 2% AB - L
+254,BU 6% + 2% AB - E
+255,BU 6% + 2% AB - M
+256,HC 6% + 0.2%DS - L
+257,HC 6% + 0.2%DS - E
+258,BU 4% + 2% AB - E
+259,BU 2% + 2% AB - M
+260,BU Lonza 4% + 2% AB - M
+261,HC 6% + 0.2%DS - L
+262,BU 6% + 2% AB - E
+263,BU 4% + 2% AB - E
+264,BU 4% + 2% AB - M
+265,BU 6% + 2% AB - M
+266,BU 1% + 2% AB - L
+267,BU 1% + 2% AB - M
+268,Untreated control
+269,BU 6% + 2% AB - E
+270,BU 4% + 2% AB - E
+271,Untreated control
+272,BU 1% + 2% AB - M
+273,2% AB - M
+274,BU 1% + 2% AB - L
+275,BU 1% + 2% AB - E
+276,BU 2% + 2% AB - L
+277,BU 6% + 2% AB - M
+278,BU 2% + 2% AB - E
+279,HC 6% + 0.2%DS - M
+280,BU 6% + 2% AB - E
+281,BU 1% + 2% AB - M
+282,BU 6% + 2% AB - M
+283,BU 1% + 2% AB - E
+284,BU 6% + 2% AB - L
+285,BU 4% + 2% AB - L
+286,BU 1% + 2% AB - L
+287,BU 2% + 2% AB - M
+288,Untreated control
+289,HC 6% + 0.2%DS - E
+290,HC 6% + 0.2%DS - M
+291,BU 4% + 2% AB - L
+292,BU 2% + 2% AB - L
+293,BU 4% + 2% AB - M
+294,HC 6% + 0.2%DS - L
+295,BU Lonza 4% + 2% AB - M
+296,BU Lonza 4% + 2% AB - M
+297,BU 6% + 2% AB - M
+298,HC 6% + 0.2%DS - E
+299,HC 6% + 0.2%DS - L
+300,BU 2% + 2% AB - E
+301,BU 2% + 2% AB - M
+302,BU 4% + 2% AB - L
+303,Untreated control
+304,BU 4% + 2% AB - E
+305,HC 6% + 0.2%DS - M
+306,BU 1% + 2% AB - L
+307,BU 2% + 2% AB - M
+308,HC 6% + 0.2%DS - E
+309,BU 2% + 2% AB - L
+310,2% AB - M
+311,HC 6% + 0.2%DS - M
+312,Untreated control
+313,HC 6% + 0.2%DS - L
+314,BU 4% + 2% AB - E
+315,BU 1% + 2% AB - E
+316,BU 6% + 2% AB - M
+317,HC 6% + 0.2%DS - L
+318,HC 6% + 0.2%DS - E
+319,BU 2% + 2% AB - E
+320,BU 4% + 2% AB - M
+321,BU 2% + 2% AB - L
+322,BU 6% + 2% AB - E
+323,2% AB - M
+324,BU Lonza 4% + 2% AB - M
+325,HC 6% + 0.2%DS - M
+326,BU 4% + 2% AB - L
+327,BU 1% + 2% AB - M
+328,BU 2% + 2% AB - M
+329,BU 1% + 2% AB - E
+330,BU Lonza 4% + 2% AB - M
+331,HC 6% + 0.2%DS - L
+332,BU 6% + 2% AB - E
+333,Untreated control
+334,BU 1% + 2% AB - M
+335,BU 4% + 2% AB - M
+336,HC 6% + 0.2%DS - E
+337,BU 6% + 2% AB - L
+338,BU 4% + 2% AB - L
+339,BU 4% + 2% AB - E
+340,2% AB - M
+341,HC 6% + 0.2%DS - M
+342,BU 2% + 2% AB - E
+343,BU 4% + 2% AB - L
+344,Untreated control
+345,BU 1% + 2% AB - M
+346,Untreated control
+347,BU Lonza 4% + 2% AB - M
+348,BU 1% + 2% AB - E
+349,BU 4% + 2% AB - M
+350,HC 6% + 0.2%DS - M
+351,BU 2% + 2% AB - L
+352,BU 2% + 2% AB - E
+353,BU 1% + 2% AB - M
+354,BU 4% + 2% AB - M
+355,BU Lonza 4% + 2% AB - M
+356,BU 2% + 2% AB - E
+357,BU 6% + 2% AB - M
+358,HC 6% + 0.2%DS - L
+359,Untreated control
+360,HC 6% + 0.2%DS - E
+361,BU 6% + 2% AB - L
+362,BU 6% + 2% AB - E
+363,BU 6% + 2% AB - M
+364,BU 4% + 2% AB - L
+365,BU 6% + 2% AB - L
+366,Untreated control
+367,BU 2% + 2% AB - M
+368,BU 1% + 2% AB - E
+369,BU 2% + 2% AB - L
+370,HC 6% + 0.2%DS - L
