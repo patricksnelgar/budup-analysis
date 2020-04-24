@@ -14,6 +14,17 @@ require(tidyverse)
 require(coyparser)
 library(magrittr)
 
+
+# 3% hicane, 1% BU, 2% BU, 4% BU, 6% BU,  2% AB, 4% Lonza, Control 
+treatment_colours <- c("HiCane 3%" = "tomato", 
+					   "Budup 1%" = "dodgerblue", 
+					   "Budup 2%" = "mediumseagreen", 
+					   "Budup 4%" = "plum", 
+					   "Budup 6%" = "orange2", 
+					   "AB 2%" = "mediumturquoise", 
+					   "Budup Lonza 4%" = "lightsalmon4",  
+					   "Untreated control" = "gray27")
+
 ```
 
 Script requires 'coyparser' package, install it as follows:
@@ -29,12 +40,12 @@ if you dont have devtools it can be installed with: install.packages("devtools")
 
 ```{r data_import, include=FALSE}
 
-coy <- read_csv("//Tep-file/home$/HRTPXS/My Documents/Data/Budup 2019/Redfox/R19 Coy 2019 & treatments.csv") %>%
+coy <- read_csv("./data/R19 Coy 2019 & treatments.csv") %>%
 			filter(batchValidateCoy(coy)) %>%
 			rename("CaneID" = 1) %>%
 			select(CaneID, coy, Treatment)
 
-caneInfo <- read_csv("//Tep-file/home$/hrtpxs/My Documents/Data/Budup 2019/Redfox/Red fox cane lengths.csv") %>%
+caneInfo <- read_csv("./data/Red fox cane lengths.csv") %>%
 				rename(CaneID = `Cane ID`) %>%
 				filter(CaneID %in% coy$CaneID) %>%
 				arrange(CaneID)
@@ -59,8 +70,8 @@ flowerDist <- table(output) %>%
 				data.frame() %>%
 				filter(flowers != "l") %>%
 				mutate(treatment = gsub("[ ][ ]+", " ", treatment), timing = str_extract(treatment, "[LMEV]+$"), timing = replace(timing, is.na(timing), "C")) %>%
-				mutate(treatment = factor(treatment, levels = c("3% HiCane + 0.2% Driftstop E", "3% HiCane M", "3% HiCane L", "3% HiCane VL", "Untreated control",
-							  "Budup 1% + AB 2% E", "Budup 1% + AB 2% M", "Budup 1% + AB 2% L", "Budup 1% + AB 2% VL", "2% AB M",
+				mutate(treatment = factor(treatment, levels = c("HiCane 3% + 0.2% Driftstop E", "HiCane 3% M", "HiCane 3% L", "HiCane 3% VL", "Untreated control",
+							  "Budup 1% + AB 2% E", "Budup 1% + AB 2% M", "Budup 1% + AB 2% L", "Budup 1% + AB 2% VL", "AB 2% M",
 							  "Budup 2% + AB 2% E", "Budup 2% + AB 2% M", "Budup 2% + AB 2% L", "Budup 2% + AB 2% VL", "Budup Lonza 4% + AB 2% M",
 							  "Budup 4% + AB 2% E" , "Budup 4% + AB 2% M", "Budup 4% + AB 2% L", "Budup 4% + AB 2% VL", "", 
 							  "Budup 6% + AB 2% E", "Budup 6% + AB 2% M", "Budup 6% + AB 2% L", "Budup 6% + AB 2% VL", " "))) %>%
@@ -101,12 +112,14 @@ for (i in 1:length(buds)) {
 
 coyDist <- table(tmp) %>%
 			data.frame() %>%
-			mutate(treatment = gsub("[ ][ ]+", " ", treatment), timing = str_extract(treatment, "[LMEV]+$")) %>%
-			mutate(treatment = factor(treatment, levels = c("3% HiCane + 0.2% Driftstop E", "3% HiCane M", "3% HiCane L", "3% HiCane VL", "Untreated control",
-							  "Budup 1% + AB 2% E", "Budup 1% + AB 2% M", "Budup 1% + AB 2% L", "Budup 1% + AB 2% VL", "2% AB M",
-							  "Budup 2% + AB 2% E", "Budup 2% + AB 2% M", "Budup 2% + AB 2% L", "Budup 2% + AB 2% VL", "Budup Lonza 4% + AB 2% M",
-							  "Budup 4% + AB 2% E" , "Budup 4% + AB 2% M", "Budup 4% + AB 2% L", "Budup 4% + AB 2% VL", "", 
-							  "Budup 6% + AB 2% E", "Budup 6% + AB 2% M", "Budup 6% + AB 2% L", "Budup 6% + AB 2% VL", " "))) %>%
+			mutate(treatment = gsub("[ ][ ]+", " ", treatment), timing = str_extract(treatment, "[LMEV]+$"),
+				   chemical = gsub("^([A-Za-z ]+[ ][0-9]%)(.+)", "\\1", treatment)) %>%
+			mutate(treatment = factor(treatment, levels = c("HiCane 3% + 0.2% DS E", "HiCane 3% + 0.2% DS M", "HiCane 3% + 0.2% DS L", 
+							  "HiCane 3% + 0.2% DS VL", "Untreated control", "Budup 1% + AB 2% E", "Budup 1% + AB 2% M",
+							  "Budup 1% + AB 2% L", "Budup 1% + AB 2% VL", "AB 2% M", "Budup 2% + AB 2% E", "Budup 2% + AB 2% M", 
+							  "Budup 2% + AB 2% L", "Budup 2% + AB 2% VL", "Budup Lonza 4% + AB 2% M", "Budup 4% + AB 2% E" , 
+							  "Budup 4% + AB 2% M", "Budup 4% + AB 2% L", "Budup 4% + AB 2% VL", "",  "Budup 6% + AB 2% E", 
+							  "Budup 6% + AB 2% M", "Budup 6% + AB 2% L", "Budup 6% + AB 2% VL", " "))) %>%
 			group_by(treatment) %>%
 			mutate(percKF = Freq / sum(Freq))
 			
@@ -116,11 +129,12 @@ coyInfo <- data.frame(ID = coy$CaneID, treatment = coy$Treatment, BB = budBreak(
 					  laterals = LateralFlowers(coy$coy),
 					  caneLength = caneInfo$Length) %>%
 			mutate(treatment = gsub("[ ][ ]+", " ", treatment)) %>%
-			mutate(treatment = factor(treatment, levels = c("3% HiCane + 0.2% Driftstop E", "3% HiCane M", "3% HiCane L", "3% HiCane VL", "Untreated control",
-							  "Budup 1% + AB 2% E", "Budup 1% + AB 2% M", "Budup 1% + AB 2% L", "Budup 1% + AB 2% VL", "2% AB M",
-							  "Budup 2% + AB 2% E", "Budup 2% + AB 2% M", "Budup 2% + AB 2% L", "Budup 2% + AB 2% VL", "Budup Lonza 4% + AB 2% M",
-							  "Budup 4% + AB 2% E" , "Budup 4% + AB 2% M", "Budup 4% + AB 2% L", "Budup 4% + AB 2% VL", "", 
-							  "Budup 6% + AB 2% E", "Budup 6% + AB 2% M", "Budup 6% + AB 2% L", "Budup 6% + AB 2% VL", " ")))
+			mutate(treatment = factor(treatment, levels = c("HiCane 3% + 0.2% DS E", "HiCane 3% + 0.2% DS M", "HiCane 3% + 0.2% DS L", 
+							  "HiCane 3% + 0.2% DS VL", "Untreated control", "Budup 1% + AB 2% E", "Budup 1% + AB 2% M",
+							  "Budup 1% + AB 2% L", "Budup 1% + AB 2% VL", "AB 2% M", "Budup 2% + AB 2% E", "Budup 2% + AB 2% M", 
+							  "Budup 2% + AB 2% L", "Budup 2% + AB 2% VL", "Budup Lonza 4% + AB 2% M", "Budup 4% + AB 2% E" , 
+							  "Budup 4% + AB 2% M", "Budup 4% + AB 2% L", "Budup 4% + AB 2% VL", "",  "Budup 6% + AB 2% E", 
+							  "Budup 6% + AB 2% M", "Budup 6% + AB 2% L", "Budup 6% + AB 2% VL", " ")))
 
 coyInfo %<>% 
 	group_by(treatment) %>% 
@@ -143,5 +157,44 @@ coyDist %>%
 		geom_text(data = coyInfo, aes(8, 0.32, label = paste("KF per m2:", KFperM)), hjust = "left", inherit.aes = FALSE) + 
 		ggtitle("R19 - Distribution of KF per shoot")
 
-ggsave("../Graphs/R19 - Distribution of shoot type.png", width = 20, height = 12)
+ggsave("./Graphs/R19 - Distribution of shoot type.png", width = 20, height = 12)
+
+
+```
+
+
+```{r report_graph, echo = FALSE}
+
+coyDist <- table(tmp) %>%
+			data.frame() %>%
+			mutate(treatment = gsub("[ ][ ]+", " ", treatment), timing = str_extract(treatment, "[LMEV]+$"),
+				   chemical = gsub("^([A-Za-z ]+[ ][0-9]%)(.+)", "\\1", treatment)) %>%
+			mutate(treatment = factor(treatment, 
+									  levels = c("HiCane 3% + 0.2% DS E", "HiCane 3% + 0.2% DS M", "HiCane 3% + 0.2% DS L", "HiCane 3% + 0.2% DS VL", 
+									  		   "Budup 1% + AB 2% E", "Budup 1% + AB 2% M", "Budup 1% + AB 2% L", "Budup 1% + AB 2% VL", 
+									  		   "Budup 2% + AB 2% E", "Budup 2% + AB 2% M", "Budup 2% + AB 2% L", "Budup 2% + AB 2% VL", 
+									  		   "Budup 4% + AB 2% E", "Budup 4% + AB 2% M", "Budup 4% + AB 2% L", "Budup 4% + AB 2% VL", 
+									  		   "Budup 6% + AB 2% E", "Budup 6% + AB 2% M", "Budup 6% + AB 2% L", "Budup 6% + AB 2% VL", 
+									  		   "Untreated control", "AB 2% M", "Budup Lonza 4% + AB 2% M"))) %>%
+			group_by(treatment) %>%
+			mutate(percKF = Freq / sum(Freq))
+
+
+
+coyDist %>%
+	ggplot(aes(flowers, percKF, fill = chemical)) +
+		geom_bar(stat = "identity") +
+		facet_wrap(~treatment, ncol = 4, scales = "free", drop = TRUE) +
+		ylim(0, 0.5) + 
+		labs(y = "Flower Distribution (%)", x = "King Flowers per shoot", main = "COY distribution for R19", fill = "Application Timing") + 
+		theme_bw() +
+		theme(legend.position = "bottom", plot.title = element_text(hjust = 0.5, size = 20)) + 
+		scale_fill_manual(values = treatment_colours) +
+		#geom_text(data = coyInfo, aes(8, 0.48, label = paste( "BB:", BudBreak)), hjust = "left", inherit.aes = FALSE) + 
+		#geom_text(data = coyInfo, aes(8, 0.40, label = paste("LperWB:", LperWB)), hjust = "left", inherit.aes = FALSE) +
+		#geom_text(data = coyInfo, aes(8, 0.32, label = paste("KF per m2:", KFperM)), hjust = "left", inherit.aes = FALSE) + 
+		ggtitle("R19 - Distribution of King Flowers per shoot")
+
+ggsave("./Graphs/R19 - Distribution of KF pershoot by chemical (colour corrected).png", width = 20, height = 12)
+
 ```
