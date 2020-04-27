@@ -188,11 +188,14 @@ coyDist %>%
 		ylim(0, 0.5) + 
 		labs(y = "Flower Distribution (%)", x = "King Flowers per shoot", main = "COY distribution for R19", fill = "Application Timing") + 
 		theme_bw() +
-		theme(legend.position = "bottom", plot.title = element_text(hjust = 0.5, size = 20)) + 
+		theme(legend.position = "bottom", 
+			  legend.background = element_rect(colour = "black", linetype = 1),
+			  plot.title = element_text(hjust = 0.5, size = 24), 
+			  strip.text.x = element_text(size = 12)) + 
 		scale_fill_manual(values = treatment_colours) +
 		#geom_text(data = coyInfo, aes(8, 0.48, label = paste( "BB:", BudBreak)), hjust = "left", inherit.aes = FALSE) + 
 		#geom_text(data = coyInfo, aes(8, 0.40, label = paste("LperWB:", LperWB)), hjust = "left", inherit.aes = FALSE) +
-		#geom_text(data = coyInfo, aes(8, 0.32, label = paste("KF per m2:", KFperM)), hjust = "left", inherit.aes = FALSE) + 
+		geom_text(data = coyInfo, aes(8.7, 0.35, label = paste("KF per m² :", KFperM)), hjust = "left", inherit.aes = FALSE) + 
 		ggtitle("R19 - Distribution of King Flowers per shoot")
 
 ggsave("./Graphs/R19 - Distribution of KF pershoot by chemical (colour corrected).png", width = 20, height = 12)
