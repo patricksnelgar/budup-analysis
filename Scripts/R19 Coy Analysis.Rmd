@@ -40,6 +40,7 @@ if you dont have devtools it can be installed with: install.packages("devtools")
 
 ```{r data_import, include=FALSE}
 
+
 coy <- read_csv("./data/R19 Coy 2019 & treatments.csv") %>%
 			filter(batchValidateCoy(coy)) %>%
 			rename("CaneID" = 1) %>%
@@ -186,7 +187,7 @@ coyDist %>%
 		geom_bar(stat = "identity") +
 		facet_wrap(~treatment, ncol = 4, scales = "free", drop = TRUE) +
 		ylim(0, 0.5) + 
-		labs(y = "Flower Distribution (%)", x = "King Flowers per shoot", main = "COY distribution for R19", fill = "Application Timing") + 
+		labs(y = "Flower Distribution (%)", x = "King Flowers per shoot", main = "COY distribution for R19", fill = "Chemical") + 
 		theme_bw() +
 		theme(legend.position = "bottom", 
 			  legend.background = element_rect(colour = "black", linetype = 1),
@@ -195,8 +196,8 @@ coyDist %>%
 		scale_fill_manual(values = treatment_colours) +
 		#geom_text(data = coyInfo, aes(8, 0.48, label = paste( "BB:", BudBreak)), hjust = "left", inherit.aes = FALSE) + 
 		#geom_text(data = coyInfo, aes(8, 0.40, label = paste("LperWB:", LperWB)), hjust = "left", inherit.aes = FALSE) +
-		geom_text(data = coyInfo, aes(8.7, 0.35, label = paste("KF per m² :", KFperM)), hjust = "left", inherit.aes = FALSE) + 
-		ggtitle("R19 - Distribution of King Flowers per shoot")
+		geom_text(data = coyInfo, aes(8.7, 0.35, label = paste("KF per m² :", KFperM)), hjust = "left", inherit.aes = FALSE) 
+		#ggtitle("R19 - Distribution of King Flowers per shoot")
 
 ggsave("./Graphs/R19 - Distribution of KF pershoot by chemical (colour corrected).png", width = 20, height = 12)
 
