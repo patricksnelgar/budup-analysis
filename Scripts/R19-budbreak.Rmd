@@ -11,6 +11,7 @@ knitr::opts_chunk$set(echo = FALSE)
 require(tidyverse)
 require(magrittr)
 require(lubridate)
+library(scales)
 
 ```
 
@@ -87,10 +88,17 @@ processedR19_budbreak$Treatment <- sapply(seq_along(processedR19_budbreak$CaneID
 # looking at just the early & late HC aplications vs control
 # as supporting evidence for the flowers per shoot distribution.
 processedR19_budbreak %>%
-	filter(Treatment %in% c("Untreated control", "3% HiCane + 0.2% Driftstop E", "3% HiCane                                        L")) %>%
-	group_by(Treatment, Date) %>%
+	mutate(treatment = gsub("[ ][ ]+", " ", Treatment), timing = str_extract(treatment, "[LMEV]+$"),
+				   chemical = gsub("^([A-Za-z ]+[ ][0-9]%)(.+)", "\\1", treatment)) %>%
+	filter(treatment %in% c("Untreated control", "3% HiCane + 0.2% Driftstop E", "3% HiCane L")) %>%
+	group_by(treatment, Date) %>%
 	summarise(mean_bb_perc = mean(BudbreakPercentage)) %>%
 	ggplot() +
-		geom_line(aes(Date, mean_bb_perc, colour = Treatment))
+		geom_line(aes(Date, mean_bb_perc, colour = treatment)) + 
+		scale_x_date(breaks = pretty_breaks(12)) + 
+		labs(colour = "Chemical x Timing", y = "Budbreak percentage")
+
+
+ggsave("./Graphs/R19 - budbreak curves (HC & Control).png", width = 10, height = 6)
 
 ```

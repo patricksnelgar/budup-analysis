@@ -228,14 +228,20 @@ coyDist <-
 	group_by(treatment) %>%
 	mutate(percKF = Freq / sum(Freq))
 
+# change labels to have 41, 23, 0 days before natural budbreak
+
+days_labs <- c("HiCane 3% + 0.2% DS E (41 Days)", "HiCane 3% + 0.2% DS L (23 Days)", "Untreated control")
+names(days_labs) <-  c("HiCane 3% + 0.2% DS E", "HiCane 3% + 0.2% DS L", "Untreated control")
+
+
 coyDist %>%
 	ggplot(aes(flowers, percKF, fill = chemical)) +
 		geom_bar(stat = "identity") +
-		facet_wrap(~treatment) +
+		facet_wrap(~treatment, labeller = labeller(treatment = days_labs)) +
 		ylim(0, 0.5) + 
-		labs(y = "Flower Distribution (%)", x = "King Flowers per shoot", main = "COY distribution for R19", fill = "Chemical") + 
+		labs(y = "Flower Distribution (%)", x = "King Flowers per shoot", main = "COY distribution for R19") + 
 		theme_bw() +
-		theme(legend.position = "bottom", 
+		theme(legend.position = "none", 
 			  legend.background = element_rect(colour = "black", linetype = 1),
 			  plot.title = element_text(hjust = 0.5, size = 24), 
 			  strip.text.x = element_text(size = 12)) + 
