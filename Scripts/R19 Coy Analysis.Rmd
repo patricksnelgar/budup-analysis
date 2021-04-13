@@ -27,6 +27,31 @@ treatment_colours <- c("HiCane 3%" = "tomato",
 
 ```
 
+
+```{r, funcitons, include=FALSE}
+
+getBudDistribution <- function(c) {
+	tmp <- NULL
+	
+	buds <- gsub("L([0-9]*)", "", c$coy, ignore.case = TRUE) %>%
+				gsub("[,]", "", .)
+	
+	for (i in 1:length(buds)) {
+		flowerChars <- strsplit(buds[i], "")[[1]]
+		t <- c$Treatment[i]
+		
+		if(!is.null(tmp))
+			tmp %<>% bind_rows(data.frame(flowers = flowerChars, treatment = t, stringsAsFactors = FALSE))
+		else
+			tmp <- data.frame(flowers = flowerChars, treatment = t, stringsAsFactors = FALSE)
+	}
+	
+	return(table(tmp) %>% data.frame())
+
+}
+
+```
+
 Script requires 'coyparser' package, install it as follows:
 
 Generate a Github PAT (Public Access Token): https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line#creating-a-token
@@ -42,6 +67,7 @@ if you dont have devtools it can be installed with: install.packages("devtools")
 
 
 coy <- read_csv("./data/R19 Coy 2019 & treatments.csv") %>%
+			mutate(coy = convertLegacyFormat(coy)) %>%
 			filter(batchValidateCoy(coy)) %>%
 			rename("CaneID" = 1) %>%
 			select(CaneID, coy, Treatment)
@@ -96,23 +122,9 @@ f <- flowerDist %>%
 
 ```{r all_buds_analysis, echo=FALSE}
 
-tmp <- NULL
 
-buds <- gsub("L([0-9]*)", "", coy$coy, ignore.case = TRUE) %>%
-			gsub("[,]", "", .)
 
-for (i in 1:length(buds)) {
-	flowerChars <- strsplit(buds[i], "")[[1]]
-	t <- coy$Treatment[i]
-	
-	if(!is.null(tmp))
-		tmp %<>% bind_rows(data.frame(flowers = flowerChars, treatment = t, stringsAsFactors = FALSE))
-	else
-		tmp <- data.frame(flowers = flowerChars, treatment = t, stringsAsFactors = FALSE)
-}
-
-coyDist <- table(tmp) %>%
-			data.frame() %>%
+coyDist <- getBudDistribution(coy) %>%
 			mutate(treatment = gsub("[ ][ ]+", " ", treatment), timing = str_extract(treatment, "[LMEV]+$"),
 				   chemical = gsub("^([A-Za-z ]+[ ][0-9]%)(.+)", "\\1", treatment)) %>%
 			mutate(treatment = factor(treatment, levels = c("HiCane 3% + 0.2% DS E", "HiCane 3% + 0.2% DS M", "HiCane 3% + 0.2% DS L", 
@@ -126,8 +138,8 @@ coyDist <- table(tmp) %>%
 			
 
 coyInfo <- data.frame(ID = coy$CaneID, treatment = coy$Treatment, BB = budBreak(coy$coy) * 100, 
-					  KF = KingFlowers(coy$coy), WB = WinterBuds(coy$coy), 
-					  laterals = LateralFlowers(coy$coy),
+					  KF = kingFlowers(coy$coy), WB = winterBuds(coy$coy), 
+					  laterals = lateralFlowers(coy$coy),
 					  caneLength = caneInfo$Length) %>%
 			mutate(treatment = gsub("[ ][ ]+", " ", treatment)) %>%
 			mutate(treatment = factor(treatment, levels = c("HiCane 3% + 0.2% DS E", "HiCane 3% + 0.2% DS M", "HiCane 3% + 0.2% DS L", 
@@ -200,5 +212,35 @@ coyDist %>%
 		#ggtitle("R19 - Distribution of King Flowers per shoot")
 
 ggsave("./Graphs/R19 - Distribution of KF pershoot by chemical (colour corrected).png", width = 20, height = 12)
+
+```
+
+Minimalistic flower distributon by shoot graph for steering group April 2021
+
+```{r}
+
+coyDist <- 
+	getBudDistribution(coy) %>%
+	mutate(treatment = gsub("[ ][ ]+", " ", treatment), timing = str_extract(treatment, "[LMEV]+$"),
+				   chemical = gsub("^([A-Za-z ]+[ ][0-9]%)(.+)", "\\1", treatment)) %>%
+	filter(treatment %in% c("HiCane 3% + 0.2% DS E", "HiCane 3% + 0.2% DS L", "Untreated control")) %>%
+	mutate(treatment = factor(treatment, levels = c("HiCane 3% + 0.2% DS E", "HiCane 3% + 0.2% DS L", "Untreated control"))) %>%
+	group_by(treatment) %>%
+	mutate(percKF = Freq / sum(Freq))
+
+coyDist %>%
+	ggplot(aes(flowers, percKF, fill = chemical)) +
+		geom_bar(stat = "identity") +
+		facet_wrap(~treatment) +
+		ylim(0, 0.5) + 
+		labs(y = "Flower Distribution (%)", x = "King Flowers per shoot", main = "COY distribution for R19", fill = "Chemical") + 
+		theme_bw() +
+		theme(legend.position = "bottom", 
+			  legend.background = element_rect(colour = "black", linetype = 1),
+			  plot.title = element_text(hjust = 0.5, size = 24), 
+			  strip.text.x = element_text(size = 12)) + 
+		scale_fill_manual(values = treatment_colours)
+
+ggsave("./Graphs/R19 - Distribution of KF pershoot by chemical (HC & Control).png", width = 12, height = 6)
 
 ```

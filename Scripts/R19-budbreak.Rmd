@@ -1,7 +1,21 @@
+---
+title: "R19 budbreak"
+author: "Patrick Snelgar"
+date: "14/04/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
 require(tidyverse)
 require(magrittr)
 require(lubridate)
 
+```
+
+
+```{r functions}
 getValidColumns <- function(data){
 	names <- colnames(data)
 	asDates <- dmy(paste(names, "2019"))
@@ -50,23 +64,13 @@ fillDataFrame <- function(data, IDcolumn = 1){
 	
 	return(mergeLogAndTranspose(processed, log))
 }
+```
 
-treatmentsG11 <- read_csv("./data/treatmentsG11.csv") %>%
-					rename(CaneID = 1, Treatment = 2)
+```{r data_import}
+
 treatmentsR19 <- read_csv("./data/treatmentsR19.csv")%>%
 					rename(CaneID = 1, Treatment = 2)
-treatmentsHW <- read_csv("./data/treatmentsHW.csv")%>%
-					rename(CaneID = 1, Treatment = 2)
-treatmentsG3 <- read_csv("./data/treatmentsG3.csv")%>%
-					rename(CaneID = 1, Treatment = 2)
 
-#replace 'x' with NA so columns are read as numeric
-rawBB_G11 <- read_csv("./data/G11_budbreak.csv", na = c("x", NA))
-
-processedG11_budbreak <- fillDataFrame(rawBB_G11)
-
-processedG11_budbreak$Treatment <- sapply(seq_along(processedG11_budbreak$CaneID), 
-										  function(x) treatmentsG11$Treatment[processedG11_budbreak$CaneID[x] == treatmentsG11$CaneID])
 
 rawBB_R19 <- read_csv("./data/R19_budbreak.csv", na = c("x", NA)) %>%
 	rename(CaneID = 1)
@@ -76,26 +80,17 @@ processedR19_budbreak <- fillDataFrame(rawBB_R19)
 processedR19_budbreak$Treatment <- sapply(seq_along(processedR19_budbreak$CaneID), 
 										  function(x) treatmentsR19$Treatment[processedR19_budbreak$CaneID[x] == treatmentsR19$CaneID])
 
-rawG3_budbreak <- read_csv("./data/G3_budbreak.csv") %>%
-					rename(CaneID = 1)
+```
 
-processedG3_budbreak <- fillDataFrame(rawG3_budbreak)
+```{r vis}
 
-processedG3_budbreak$Treatment <- sapply(seq_along(processedG3_budbreak$CaneID), 
-							   			function(x) treatmentsG3$Treatment[processedG3_budbreak$CaneID[x] == treatmentsG3$CaneID])
+# looking at just the early & late HC aplications vs control
+# as supporting evidence for the flowers per shoot distribution.
+processedR19_budbreak %>%
+	filter(Treatment %in% c("Untreated control", "3% HiCane + 0.2% Driftstop E", "3% HiCane                                        L")) %>%
+	group_by(Treatment, Date) %>%
+	summarise(mean_bb_perc = mean(BudbreakPercentage)) %>%
+	ggplot() +
+		geom_line(aes(Date, mean_bb_perc, colour = Treatment))
 
-rawHW_budbreak <- read_csv("./data/HW_budbreak.csv") %>%
-					rename(CaneID = 1)
-
-processedHW_budbreak <- fillDataFrame(rawHW_budbreak)
-
-processedHW_budbreak$Treatment <- sapply(seq_along(processedHW_budbreak$CaneID), 
-										 function(x) treatmentsHW$Treatment[processedHW_budbreak$CaneID[x] == treatmentsHW$CaneID])
-
-write_csv(processedG11_budbreak, "./output/G11_budbreak_longformat.csv")
-write_csv(processedR19_budbreak, "./output/R19_budbreak_longformat.csv")
-write_csv(processedG3_budbreak, "./output/G3_budbreak_longformat.csv")
-write_csv(processedHW_budbreak, "./output/HW_budbreak_longformat.csv")
-
-
-
+```
